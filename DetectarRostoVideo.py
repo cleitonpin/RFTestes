@@ -7,7 +7,7 @@ cap = cv2.VideoCapture(0)
 face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 
 eye_cascade = cv2.CascadeClassifier('haarcascade_eye.xml')
-
+cont = 0
 while True:
     _, frame = cap.read()
 
@@ -22,14 +22,14 @@ while True:
         roi_gray = gray[y:y+h, x:x+w]
         roi_color = frame[y:y+h, x:x+w]
            
-        cv2.imshow("roi_gray", roi_gray)
-
-        
         if roi_gray.all():
             n = 1
             while n > 0:
-                print(n)
+                #print(n)
                 n = n + 1
+                cv2.imwrite("train/Foto."+ str(cont) + ".jpg", roi_gray)
+                cv2.waitKey(300)
+                cv2.imshow("foto capturada", roi_gray)
 
         eyes = eye_cascade.detectMultiScale(roi_gray)
         for (ex,ey,ew,eh) in eyes:

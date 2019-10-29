@@ -24,7 +24,7 @@ for (x,y,w,h) in faces:
     for (ex,ey,ew,eh) in eyes:
         cv2.rectangle(roi_color,(ex,ey),(ex+ew, ey+eh), (255,0,0),2)
 
-
+cv2.imw
 cv2.imshow("Minha imagem", image)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
